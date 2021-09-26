@@ -3,6 +3,7 @@ package com.github.cse1110.andy;
 import com.google.common.io.Files;
 import nl.tudelft.cse1110.andy.Andy;
 import nl.tudelft.cse1110.andy.execution.mode.Action;
+import nl.tudelft.cse1110.andy.utils.PropertyUtils;
 import nl.tudelft.cse1110.andy.writer.standard.StandardResultWriter;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
@@ -70,7 +71,7 @@ public class AndyMojo extends AbstractMojo {
                 workDir.getAbsolutePath(),
                 outputDir.getAbsolutePath(),
                 compileClasspathElements,
-                new StandardResultWriter()
+                new StandardResultWriter(PropertyUtils.getVersionInformation())
             ).run();
 
             /* Read output file */
